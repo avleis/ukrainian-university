@@ -1,0 +1,11 @@
+# C#
+bin/
+obj/
+.vs/
+
+# Rider / JetBrains
+.idea/
+
+.DS_Store
+.vscode
+.claude
