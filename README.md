@@ -2,7 +2,7 @@
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![C#](https://img.shields.io/badge/C%23-14-239120?logo=csharp&logoColor=white)](https://learn.microsoft.com/dotnet/csharp/)
-[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 
 Навчальні роботи з дисциплін університету: лабораторні, практичні та домашні завдання.
 
@@ -20,6 +20,7 @@
 ukrainian-university/
 ├── FirstCourse/                       # 1 курс
 │   └── AlgorithmsAndProgramming/      # Алгоритми та програмування
+│       ├── AssignmentsForLaboratoryWorks01To09.doc
 │       ├── AssignmentsForLaboratoryWorks10To15.docx
 │       ├── LaboratoryWork02/
 │       │   ├── LaboratoryWork02.sln
@@ -49,7 +50,10 @@ ukrainian-university/
 | [09](FirstCourse/AlgorithmsAndProgramming/LaboratoryWork09) | Класи та колекції | Облік результатів регати: введення яхт з клавіатури або файла, виведення за класами, відсортованими за місцем. |
 | [10](FirstCourse/AlgorithmsAndProgramming/LaboratoryWork10) | Методи, введення та словники | Консольне меню з п'яти прикладів: перевірка введення, табуляція, дата й час, умови, телефонна книга (`Dictionary`). |
 
-Умови лабораторних робіт 10–15: [`AssignmentsForLaboratoryWorks10To15.docx`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks10To15.docx).
+Умови лабораторних робіт:
+
+- 01–09: [`AssignmentsForLaboratoryWorks01To09.doc`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks01To09.doc)
+- 10–15: [`AssignmentsForLaboratoryWorks10To15.docx`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks10To15.docx)
 
 ### Формат вхідних файлів
 
@@ -104,4 +108,4 @@ dotnet run
 
 ## Ліцензія
 
-Проєкт поширюється як суспільне надбання за ліцензією [Unlicense](LICENSE).
+Проєкт поширюється за ліцензією [GNU General Public License v3.0](LICENSE).
