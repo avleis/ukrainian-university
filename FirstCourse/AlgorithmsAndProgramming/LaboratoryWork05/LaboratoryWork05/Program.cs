@@ -8,14 +8,14 @@ class Program
 
         string[] months =
         [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
+            "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень",
+            "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"
         ];
         double[] T = new double[12];
 
         for (int i = 0; i <= 11; i++)
         {
-            Console.Write($"Enter the temperature for \"{months[i]}\", °C: ");
+            Console.Write($"Введіть температуру за місяць \"{months[i]}\", °C: ");
             T[i] = Convert.ToDouble(Console.ReadLine());
         }
 
@@ -34,7 +34,7 @@ class Program
             }
         }
 
-        Console.WriteLine(negMax == -1000 ? "There are no negative temperatures." : $"The highest negative temperature: {negMax} °C");
-        Console.WriteLine(posMin == 1000 ? "There are no positive temperatures." : $"The lowest positive temperature: {posMin} °C");
+        Console.WriteLine(negMax == -1000 ? "Від'ємних температур немає." : $"Найвища від'ємна температура: {negMax} °C");
+        Console.WriteLine(posMin == 1000 ? "Додатних температур немає." : $"Найнижча додатна температура: {posMin} °C");
     }
 }

@@ -5,30 +5,33 @@ static class Program
     [STAThread]
     static void Main()
     {
-        Console.Write("---This is a console mini-program---\n");
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = System.Text.Encoding.UTF8;
+
+        Console.Write("---Консольна міні-програма---\n");
         while (true)
         {
-            Console.WriteLine("Enter:\n" +
-                              "1 - to test Example 1\n" +
-                              "2 - to test Example 2\n" +
-                              "3 - to test Example 3\n" +
-                              "4 - to test Example 4\n" +
-                              "5 - to test Example 5\n" +
-                              "exit - to Exit");
+            Console.WriteLine("Введіть:\n" +
+                              "1 - перевірити приклад 1\n" +
+                              "2 - перевірити приклад 2\n" +
+                              "3 - перевірити приклад 3\n" +
+                              "4 - перевірити приклад 4\n" +
+                              "5 - перевірити приклад 5\n" +
+                              "0 - вийти");
             string? choice = Console.ReadLine();
 
             switch (choice?.ToLower())
             {
                 case "1":
-                    Console.WriteLine(Example1("Enter integer: "));
+                    Console.WriteLine(Example1("Введіть ціле число: "));
                     break;
                 case "2": Example2(); break;
                 case "3": Example3(); break;
                 case "4": Example4(); break;
                 case "5": Example5(); break;
                 case null:
-                case "exit": Environment.Exit(0); break;
-                default: Console.WriteLine("Invalid choice."); break;
+                case "0": Environment.Exit(0); break;
+                default: Console.WriteLine("Неправильний вибір."); break;
             }
         }
     }
@@ -45,18 +48,18 @@ static class Program
                 return number; 
             }
 
-            Console.WriteLine("Invalid input. Please enter a valid integer.");
+            Console.WriteLine("Некоректне введення. Введіть ціле число.");
         }
     }
 
     static void Example2()
     {
-        int limit = Example1("Enter limit: ");
-        int step = Example1("Enter step: ");
+        int limit = Example1("Введіть межу: ");
+        int step = Example1("Введіть крок: ");
         
         if (step <= 0)
         {
-            Console.WriteLine("Step must be greater than 0.");
+            Console.WriteLine("Крок має бути більшим за 0.");
             return; 
         }
 
@@ -85,32 +88,32 @@ static class Program
 
     static void Example4()
     {
-        int temperature = Example1("What's the temperature today? (int): ");
+        int temperature = Example1("Яка сьогодні температура? (ціле число): ");
         
         if  (temperature <= 0)
-            Console.WriteLine("It's cold");
+            Console.WriteLine("Холодно");
         else if (temperature < 15)
-            Console.WriteLine("It's chilly");
+            Console.WriteLine("Прохолодно");
         else if  (temperature < 25)
-            Console.WriteLine("It's warm");
+            Console.WriteLine("Тепло");
         else
-            Console.WriteLine("It's hot");
+            Console.WriteLine("Спекотно");
     }
 
     static void Example5()
     {
         Dictionary<string, string> phoneBook = new Dictionary<string, string>
         {
-            ["Anna"] = "+380 93 094 10 12",
-            ["Daniel"] =  "+380 95 007 53 67"
+            ["Анна"] = "+380 93 094 10 12",
+            ["Данило"] =  "+380 95 007 53 67"
         };
-        phoneBook.Add("John", "+380 50 454 18 19");
+        phoneBook.Add("Іван", "+380 50 454 18 19");
         
-        Console.WriteLine("Enter:\n" +
-                          "1 - show all contacts\n" +
-                          "2 - find contact\n" +
-                          "3 - count contacts\n" +
-                          "exit - to Exit");
+        Console.WriteLine("Введіть:\n" +
+                          "1 - показати всі контакти\n" +
+                          "2 - знайти контакт\n" +
+                          "3 - кількість контактів\n" +
+                          "0 - вийти");
         string? choice =  Console.ReadLine();
 
         switch (choice)
@@ -123,19 +126,19 @@ static class Program
 
                 break;
             case "2": 
-                Console.WriteLine("Whose phone number are you looking for?");
+                Console.WriteLine("Чий номер телефону ви шукаєте?");
                 
                 string? contactFind =  Console.ReadLine();
                 if (contactFind != null && phoneBook.TryGetValue(contactFind, out string? number))
                     Console.WriteLine(number);
                 else
-                    Console.WriteLine("Not found.");
+                    Console.WriteLine("Не знайдено.");
                 
                 break;
             case "3":
                 Console.WriteLine(phoneBook.Count);
                 break;
-            case "exit": return;
+            case "0": return;
         }
     }
 }
