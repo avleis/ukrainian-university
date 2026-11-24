@@ -1,0 +1,24 @@
+namespace LaboratoryWork10;
+
+public class Menu
+{
+    public List<string> MenuOption { get; set; }
+    public string ExitOption { get; set; }
+    
+    public Menu(List<string> menuOption, string exitOption = "вийти")
+    {
+        MenuOption = menuOption;
+        ExitOption = exitOption;
+    }
+
+    public void ShowMenu()
+    {
+        Console.WriteLine("--------------------");
+        for (var i = 0; i < MenuOption.Count; i++)
+        {
+            Console.WriteLine($"{i + 1} - {MenuOption[i]}");
+        }
+        Console.WriteLine($"0 - {ExitOption}");
+        Console.WriteLine("--------------------");
+    }
+}
