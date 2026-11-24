@@ -127,7 +127,9 @@ public class FunctionTable
         Console.WriteLine($"{"x",xWidth} │{GetFunctionName(),yWidth}");
         Console.WriteLine(new string('─', xWidth + 1) + "┼" + new string('─', yWidth));
 
-        int n = (int)Math.Round((Limit - Start) / Step);
+        // кількість кроків округлюємо вниз, щоб останній x не вийшов за межу;
+        // 1e-9 — запас на похибку double: 0.3 / 0.1 дає 2.9999999999999996, а має бути 3
+        int n = (int)Math.Floor((Limit - Start) / Step + 1e-9);
 
         for (int i = 0; i <= n; i++)
         {
