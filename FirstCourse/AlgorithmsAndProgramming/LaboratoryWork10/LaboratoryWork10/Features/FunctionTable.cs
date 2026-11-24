@@ -76,9 +76,14 @@ public class FunctionTable
     bool IsDefined(double x)
     {
         if (x == 0 && Function == 5)
+        {
             return false;
+        }
         else if (x < 0 && Function == 3)
+        {
             return false;
+        }
+
         return true;
     }
 
