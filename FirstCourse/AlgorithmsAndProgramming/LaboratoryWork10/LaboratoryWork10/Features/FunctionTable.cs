@@ -4,35 +4,21 @@ namespace LaboratoryWork10.Features;
 
 public class FunctionTable
 {
-    private int Function { get; set; }
-    private double Start { get; set; }
-    private double Limit { get; set; }
-    private double Step { get; set; }
-    
-    public FunctionTable(int function = 1, double start = 0, double limit = 5, double step = 0.5)
-    {
-        Function = function;
-        Start = start;
-        Limit = limit;
-        Step = step;
-    }
-    
-    static Dictionary<string, int> functionList = new Dictionary<string, int>
-    {
-        ["x²"] = 1,
-        ["x³"] = 2,
-        ["√x"] = 3,
-        ["sin x"] = 4,
-        ["1/x"] = 5
-    };
-    
+    // назви функцій: з них будується меню, і за ними ж Calculate обирає формулу
+    static readonly string[] FunctionNames = ["x²", "x³", "√x", "sin x", "1/x"];
+
+    string function = "x²";
+    double start = 0;
+    double limit = 5;
+    double step = 0.5;
+
     static readonly Menu FunctionTableMenu = new([
         "обрати функцію",
         "задати діапазон",
         "показати таблицю"
     ], "назад", "--- Таблиця функцій ---");
 
-    static readonly Menu FunctionListMenu = new(functionList.Keys.ToArray(), "назад", "--- Вибір функції ---");
+    static readonly Menu FunctionListMenu = new(FunctionNames, "назад", "--- Вибір функції ---");
 
     void ChooseFunction()
     {
@@ -42,44 +28,33 @@ public class FunctionTable
         // 0 — назад, функцію не змінюємо
         if (choice != 0)
         {
-            Function = choice;
+            // пункти меню нумеруються з 1, а масив з 0
+            function = FunctionNames[choice - 1];
         }
     }
 
-    string? GetFunctionName()
-    {
-        foreach (var pair in functionList)
-        {
-            if (pair.Value == Function)
-            {
-                return pair.Key;
-            }
-        }
-
-        return null;
-    }
-    
     double Calculate(double x)
     {
-        switch (Function)
+        switch (function)
         {
-            case 1: return Math.Pow(x, 2);
-            case 2: return Math.Pow(x, 3);
-            case 3: return Math.Sqrt(x);
-            case 4: return Math.Sin(x);
-            case 5: return Math.Pow(x, -1);
+            case "x²": return x * x;
+            case "x³": return x * x * x;
+            case "√x": return Math.Sqrt(x);
+            case "sin x": return Math.Sin(x);
+            case "1/x": return 1 / x;
         }
 
-        return 0;
+        // сюди потрапимо, лише якщо назву додали в масив, а формулу забули; NaN буде видно в таблиці
+        return double.NaN;
     }
 
     bool IsDefined(double x)
     {
-        if (x == 0 && Function == 5)
+        if (x == 0 && function == "1/x")
         {
             return false;
         }
-        else if (x < 0 && Function == 3)
+        else if (x < 0 && function == "√x")
         {
             return false;
         }
@@ -89,15 +64,15 @@ public class FunctionTable
 
     void SetRange()
     {
-        Start = ConsoleInput.ReadDouble("Введіть початок: ");
+        start = ConsoleInput.ReadDouble("Введіть початок: ");
 
         while (true)
         {
-            double limit = ConsoleInput.ReadDouble("Введіть межу: ");
+            double inputLimit = ConsoleInput.ReadDouble("Введіть межу: ");
 
-            if (limit > Start)
+            if (inputLimit > start)
             {
-                Limit = limit;
+                limit = inputLimit;
                 break;
             }
 
@@ -106,11 +81,11 @@ public class FunctionTable
 
         while (true)
         {
-            double step = ConsoleInput.ReadDouble("Введіть крок: ");
+            double inputStep = ConsoleInput.ReadDouble("Введіть крок: ");
 
-            if (step > 0)
+            if (inputStep > 0)
             {
-                Step = step;
+                step = inputStep;
                 break;
             }
 
@@ -124,16 +99,16 @@ public class FunctionTable
         const int xWidth = 8;
         const int yWidth = 10;
 
-        Console.WriteLine($"{"x",xWidth} │{GetFunctionName(),yWidth}");
+        Console.WriteLine($"{"x",xWidth} │{function,yWidth}");
         Console.WriteLine(new string('─', xWidth + 1) + "┼" + new string('─', yWidth));
 
         // кількість кроків округлюємо вниз, щоб останній x не вийшов за межу;
         // 1e-9 — запас на похибку double: 0.3 / 0.1 дає 2.9999999999999996, а має бути 3
-        int n = (int)Math.Floor((Limit - Start) / Step + 1e-9);
+        int n = (int)Math.Floor((limit - start) / step + 1e-9);
 
         for (int i = 0; i <= n; i++)
         {
-            double x = Start + i * Step;
+            double x = start + i * step;
 
             // через похибку double замість 0 може вийти, наприклад, -1e-16, тому таке число вважаємо нулем
             if (Math.Abs(x) < 1e-9)
@@ -152,7 +127,7 @@ public class FunctionTable
             }
         }
     }
-    
+
     public void RunMenu()
     {
         while (true)
@@ -166,7 +141,7 @@ public class FunctionTable
                 case 3: ShowTable(); break;
                 case 0: return;
             }
-            
+
             ConsoleInput.WaitForEnter();
         }
     }
