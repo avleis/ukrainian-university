@@ -22,9 +22,10 @@ public class FunctionTable
 
     void ChooseFunction()
     {
+        
         // Choose повертає тільки існуючий пункт, тому перевіряти номер ще раз не треба
         int choice = FunctionListMenu.Choose("Оберіть функцію: ");
-
+        
         // 0 — назад, функцію не змінюємо
         if (choice != 0)
         {
@@ -95,6 +96,8 @@ public class FunctionTable
 
     void ShowTable()
     {
+        Console.WriteLine($"Функція: {function}, діапазон: від {start} до {limit}, крок {step}");
+
         // ширина колонок; const, бо в {x,ширина} можна писати тільки константу
         const int xWidth = 8;
         const int yWidth = 10;
@@ -133,7 +136,7 @@ public class FunctionTable
         while (true)
         {
             int choice = FunctionTableMenu.Choose();
-
+            
             switch (choice)
             {
                 case 1: ChooseFunction(); break;
