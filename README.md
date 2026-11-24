@@ -20,7 +20,7 @@
 ukrainian-university/
 ├── FirstCourse/                       # 1 курс
 │   └── AlgorithmsAndProgramming/      # Алгоритми та програмування
-│       ├── AssignmentsForLaboratoryWorks01To09.doc
+│       ├── AssignmentsForLaboratoryWorks01To09.docx
 │       ├── AssignmentsForLaboratoryWorks10To15.docx
 │       ├── LaboratoryWork02/
 │       │   ├── LaboratoryWork02.sln
@@ -52,7 +52,7 @@ ukrainian-university/
 
 Умови лабораторних робіт:
 
-- 01–09: [`AssignmentsForLaboratoryWorks01To09.doc`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks01To09.doc)
+- 01–09: [`AssignmentsForLaboratoryWorks01To09.docx`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks01To09.docx)
 - 10–15: [`AssignmentsForLaboratoryWorks10To15.docx`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks10To15.docx)
 
 ### Формат вхідних файлів
