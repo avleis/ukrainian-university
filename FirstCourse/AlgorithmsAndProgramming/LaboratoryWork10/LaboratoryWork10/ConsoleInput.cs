@@ -17,6 +17,22 @@ public static class ConsoleInput
             Console.WriteLine("Некоректне введення. Введіть ціле число.");
         }
     }
+    
+    public static double ReadDouble(string prompt = "")
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+
+            if (double.TryParse(input, out double number))
+            {
+                return number; 
+            }
+
+            Console.WriteLine("Некоректне введення. Введіть число.");
+        }
+    }
 
     public static string ReadNonEmptyString(string prompt, string errorPrompt = "")
     {
