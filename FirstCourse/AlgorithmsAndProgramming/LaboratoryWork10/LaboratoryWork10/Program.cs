@@ -74,12 +74,20 @@ static class Program
         int temperature = ConsoleInput.ReadInt("Яка сьогодні температура? (ціле число): ");
         
         if  (temperature <= 0)
+        {
             Console.WriteLine("Холодно");
+        }
         else if (temperature < 15)
+        {
             Console.WriteLine("Прохолодно");
+        }
         else if  (temperature < 25)
+        {
             Console.WriteLine("Тепло");
+        }
         else
+        {
             Console.WriteLine("Спекотно");
+        }
     }
 }

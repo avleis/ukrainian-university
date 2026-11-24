@@ -41,7 +41,10 @@ public static class ConsoleInput
             Console.Write("Введіть номер телефону для контакту " + contactName + " (без пробілів): ");
             string? input = Console.ReadLine();
 
-            if (input != null && IsValidPhoneNumber(input)) return input;
+            if (input != null && IsValidPhoneNumber(input))
+            {
+                return input;
+            }
             
             Console.WriteLine("Некоректне введення. Введіть номер телефону у форматі +380931048101.");
         }
@@ -55,8 +58,12 @@ public static class ConsoleInput
         }
 
         for (var i = 1; i < phoneNumber.Length; i++)
+        {
             if (!char.IsDigit(phoneNumber[i]))
+            {
                 return false;
+            }
+        }
         
         return true;
     }

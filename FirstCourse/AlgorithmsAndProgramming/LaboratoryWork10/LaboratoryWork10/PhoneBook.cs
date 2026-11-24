@@ -33,10 +33,13 @@ public class PhoneBook
                 
         string? contactFind =  Console.ReadLine();
         if (contactFind != null && phoneBook.TryGetValue(contactFind, out string? number))
+        {
             Console.WriteLine(number);
+        }
         else
+        {
             Console.WriteLine("Контакт не знайдено.");
-
+        }
     }
 
     void Add()
@@ -64,9 +67,13 @@ public class PhoneBook
                 
         string? contactName =  Console.ReadLine();
         if (contactName != null && phoneBook.Remove(contactName))
+        {
             Console.WriteLine("Контакт видалено з телефонної книги.");
+        }
         else
+        {
             Console.WriteLine("Контакт не знайдено.");
+        }
     }
 
     public void RunMenu()
