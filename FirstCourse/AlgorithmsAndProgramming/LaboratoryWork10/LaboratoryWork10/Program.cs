@@ -1,7 +1,40 @@
 ﻿namespace LaboratoryWork10;
 
+public class Menu
+{
+    public List<string> MenuOption { get; set; }
+
+    public Menu(List<string> menuOption)
+    {
+        MenuOption = menuOption;
+    }
+
+    public void ShowMenu()
+    {
+        for (var i = 0; i < MenuOption.Count; i++)
+        {
+            Console.WriteLine($"{i + 1} - {MenuOption[i]}");
+        }
+        Console.WriteLine("0 - вийти");
+    }
+}
+
 static class Program
 {
+    static readonly Menu MainMenu = new([
+        "перевірити приклад 2",
+        "перевірити приклад 3",
+        "перевірити приклад 4",
+        "перевірити приклад 5"
+    ]);
+
+    static readonly Menu PhoneBookMenu = new([
+        "показати всі контакти",
+        "знайти контакт",
+        "кількість контактів",
+        "додати контакт"
+    ]);
+    
     [STAThread]
     static void Main()
     {
@@ -18,12 +51,7 @@ static class Program
         Console.Write("---Консольна міні-програма---\n");
         while (true)
         {
-            Console.WriteLine("Введіть:\n" +
-                              "1 - перевірити приклад 2\n" +
-                              "2 - перевірити приклад 3\n" +
-                              "3 - перевірити приклад 4\n" +
-                              "4 - перевірити приклад 5\n" +
-                              "0 - вийти");
+            MainMenu.ShowMenu();
             string? choice = Console.ReadLine();
 
             switch (choice?.ToLower())
@@ -126,12 +154,7 @@ static class Program
 
     static void Example5(Dictionary<string, string> phoneBook)
     {
-        Console.WriteLine("Введіть:\n" +
-                          "1 - показати всі контакти\n" +
-                          "2 - знайти контакт\n" +
-                          "3 - кількість контактів\n" +
-                          "4 - додати контакт\n" +
-                          "0 - вийти");
+        PhoneBookMenu.ShowMenu();
         string? choice =  Console.ReadLine();
 
         switch (choice)
