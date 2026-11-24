@@ -19,30 +19,26 @@ static class Program
         while (true)
         {
             Console.WriteLine("Введіть:\n" +
-                              "1 - перевірити приклад 1\n" +
-                              "2 - перевірити приклад 2\n" +
-                              "3 - перевірити приклад 3\n" +
-                              "4 - перевірити приклад 4\n" +
-                              "5 - перевірити приклад 5\n" +
+                              "1 - перевірити приклад 2\n" +
+                              "2 - перевірити приклад 3\n" +
+                              "3 - перевірити приклад 4\n" +
+                              "4 - перевірити приклад 5\n" +
                               "0 - вийти");
             string? choice = Console.ReadLine();
 
             switch (choice?.ToLower())
             {
-                case "1":
-                    Console.WriteLine(Example1("Введіть ціле число: "));
-                    break;
-                case "2": Example2(); break;
-                case "3": Example3(); break;
-                case "4": Example4(); break;
-                case "5": Example5(phoneBook); break;
+                case "1": Example2(); break;
+                case "2": Example3(); break;
+                case "3": Example4(); break;
+                case "4": Example5(phoneBook); break;
                 case null:
                 case "0": Environment.Exit(0); break;
                 default: Console.WriteLine("Неправильний вибір."); break;
             }
         }
     }
-
+    
     static int Example1(string prompt)
     {
         while (true)
@@ -56,6 +52,27 @@ static class Program
             }
 
             Console.WriteLine("Некоректне введення. Введіть ціле число.");
+        }
+    }
+    
+    static string InputPhoneNumber(string contactName)
+    {
+        while (true)
+        {
+            Console.Write("Введіть номер контакту " + contactName + " (Номер телефону повинен записуватись через пробіл): ");
+            string input = Console.ReadLine();
+
+            if (input != null)
+            {
+                if (input.Length == 17)
+                {
+                    return input;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Некоректне введення. Введіть номер телефону за форматом +380 01 001 01 01.");
+            }
         }
     }
 
@@ -140,10 +157,23 @@ static class Program
                 Console.WriteLine(phoneBook.Count);
                 break;
             case "4":
-                Console.WriteLine("Введіть ім'я контакту: ");
-                string contactName = Console.ReadLine();
-                Console.WriteLine("Введіть номер контакту " + contactName + ": ");
-                string contactPhone = Console.ReadLine();
+                string contactName;
+
+                while (true)
+                {
+                    Console.WriteLine("Введіть ім'я контакту: ");
+                    string? input = Console.ReadLine();
+
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        contactName = input;
+                        break;
+                    }
+                    
+                    Console.WriteLine("Некоректне введення. Введіть ім'я контакту");
+                }
+                
+                string contactPhone = InputPhoneNumber(contactName);
                 phoneBook.Add(contactName, contactPhone);
                 break;
             case "0": return;
