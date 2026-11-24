@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace LaboratoryWork10;
 
 public static class ConsoleInput
@@ -8,6 +10,12 @@ public static class ConsoleInput
         {
             Console.Write(prompt);
             string? input = Console.ReadLine();
+
+            // null означає, що введення закінчилось (наприклад, Ctrl+D) — далі читати нічого
+            if (input == null)
+            {
+                Environment.Exit(0);
+            }
 
             if (int.TryParse(input, out int number))
             {
@@ -25,7 +33,15 @@ public static class ConsoleInput
             Console.Write(prompt);
             string? input = Console.ReadLine();
 
-            if (double.TryParse(input, out double number))
+            if (input == null)
+            {
+                Environment.Exit(0);
+            }
+
+            // приймаємо і кому, і крапку: замінюємо кому на крапку і читаємо в інваріантній культурі
+            input = input.Replace(',', '.');
+
+            if (double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out double number))
             {
                 return number; 
             }
