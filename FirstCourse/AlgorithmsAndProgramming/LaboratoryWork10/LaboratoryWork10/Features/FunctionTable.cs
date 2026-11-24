@@ -30,9 +30,9 @@ public class FunctionTable
         "обрати функцію",
         "задати діапазон",
         "показати таблицю"
-    ], "назад");
+    ], "назад", "--- Таблиця функцій ---");
 
-    static readonly Menu FunctionListMenu = new(functionList.Keys.ToArray(), "назад");
+    static readonly Menu FunctionListMenu = new(functionList.Keys.ToArray(), "назад", "--- Вибір функції ---");
 
     void ChooseFunction()
     {
