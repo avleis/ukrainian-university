@@ -62,7 +62,10 @@ public static class ConsoleInput
                 Environment.Exit(0);
             }
 
-            if (!string.IsNullOrEmpty(input))
+            // прибираємо пробіли по краях, щоб "Анна " і "Анна" були одним іменем
+            input = input.Trim();
+
+            if (input != "")
             {
                 return input;
             }
