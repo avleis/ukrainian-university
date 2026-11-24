@@ -2,15 +2,15 @@ namespace LaboratoryWork10.Common;
 
 public class Menu
 {
+    public string Title { get; }
     public string[] Options { get; }
     public string ExitOption { get; }
-    public string Title { get; }
 
-    public Menu(string[] options, string exitOption = "вийти", string title = "")
+    public Menu(string title, string[] options, string exitOption = "вийти")
     {
+        Title = title;
         Options = options;
         ExitOption = exitOption;
-        Title = title;
     }
 
     public void ShowMenu()

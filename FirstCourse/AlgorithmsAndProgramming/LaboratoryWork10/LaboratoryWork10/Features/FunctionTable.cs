@@ -12,13 +12,13 @@ public class FunctionTable
     double limit = 5;
     double step = 0.5;
 
-    static readonly Menu FunctionTableMenu = new([
+    static readonly Menu FunctionTableMenu = new("--- Таблиця функцій ---", [
         "обрати функцію",
         "задати діапазон",
         "показати таблицю"
-    ], "назад", "--- Таблиця функцій ---");
+    ], "назад");
 
-    static readonly Menu FunctionListMenu = new(FunctionNames, "назад", "--- Вибір функції ---");
+    static readonly Menu FunctionListMenu = new("--- Вибір функції ---", FunctionNames, "назад");
 
     void ChooseFunction()
     {

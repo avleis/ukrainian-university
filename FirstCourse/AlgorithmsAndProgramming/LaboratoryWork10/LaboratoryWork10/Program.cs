@@ -5,12 +5,12 @@ namespace LaboratoryWork10;
 
 static class Program
 {
-    static readonly Menu MainMenu = new([
+    static readonly Menu MainMenu = new("--- Консольна програма-помічник ---", [
         "таблиця функцій",
         "дата і час",
         "конвертер оцінок",
         "телефонна книга"
-    ], title: "--- Консольна програма-помічник ---");
+    ]);
     
     [STAThread]
     static void Main()
