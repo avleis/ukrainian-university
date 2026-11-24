@@ -60,7 +60,13 @@ public class PhoneBook
 
     void Remove()
     {
-        
+        Console.Write("Введіть ім'я контакту, який треба видалити: ");
+                
+        string? contactName =  Console.ReadLine();
+        if (contactName != null && phoneBook.Remove(contactName))
+            Console.WriteLine("Контакт видалено з телефонної книги.");
+        else
+            Console.WriteLine("Контакт не знайдено.");
     }
 
     public void RunMenu()
