@@ -5,6 +5,7 @@ obj/
 
 # Rider / JetBrains
 .idea/
+*.DotSettings.user
 
 .DS_Store
 .vscode
