@@ -7,6 +7,13 @@ static class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Console.InputEncoding = System.Text.Encoding.UTF8;
+        
+        Dictionary<string, string> phoneBook = new Dictionary<string, string>
+        {
+            ["Анна"] = "+380 93 094 10 12",
+            ["Данило"] =  "+380 95 007 53 67",
+            ["Іван"] = "+380 50 454 18 19"
+        };
 
         Console.Write("---Консольна міні-програма---\n");
         while (true)
@@ -28,7 +35,7 @@ static class Program
                 case "2": Example2(); break;
                 case "3": Example3(); break;
                 case "4": Example4(); break;
-                case "5": Example5(); break;
+                case "5": Example5(phoneBook); break;
                 case null:
                 case "0": Environment.Exit(0); break;
                 default: Console.WriteLine("Неправильний вибір."); break;
@@ -100,19 +107,13 @@ static class Program
             Console.WriteLine("Спекотно");
     }
 
-    static void Example5()
+    static void Example5(Dictionary<string, string> phoneBook)
     {
-        Dictionary<string, string> phoneBook = new Dictionary<string, string>
-        {
-            ["Анна"] = "+380 93 094 10 12",
-            ["Данило"] =  "+380 95 007 53 67"
-        };
-        phoneBook.Add("Іван", "+380 50 454 18 19");
-        
         Console.WriteLine("Введіть:\n" +
                           "1 - показати всі контакти\n" +
                           "2 - знайти контакт\n" +
                           "3 - кількість контактів\n" +
+                          "4 - додати контакт\n" +
                           "0 - вийти");
         string? choice =  Console.ReadLine();
 
@@ -137,6 +138,13 @@ static class Program
                 break;
             case "3":
                 Console.WriteLine(phoneBook.Count);
+                break;
+            case "4":
+                Console.WriteLine("Введіть ім'я контакту: ");
+                string contactName = Console.ReadLine();
+                Console.WriteLine("Введіть номер контакту " + contactName + ": ");
+                string contactPhone = Console.ReadLine();
+                phoneBook.Add(contactName, contactPhone);
                 break;
             case "0": return;
         }
