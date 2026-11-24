@@ -1,4 +1,7 @@
-﻿namespace LaboratoryWork10;
+﻿using LaboratoryWork10.Common;
+using LaboratoryWork10.Features;
+
+namespace LaboratoryWork10;
 
 static class Program
 {
@@ -7,7 +10,7 @@ static class Program
         "дата і час",
         "конвертер оцінок",
         "телефонна книга"
-    ]);
+    ], title: "--- Консольна програма-помічник ---");
     
     [STAThread]
     static void Main()
@@ -20,27 +23,23 @@ static class Program
 
         while (true)
         {
-            Console.Clear();
-            Console.WriteLine("--- Консольна програма-помічник ---");
-            MainMenu.ShowMenu();
-            int choice = ConsoleInput.ReadInt("Оберіть пункт меню: ");
+            int choice = MainMenu.Choose();
 
             switch (choice)
             {
                 // після підменю пауза не потрібна: continue одразу повертає до головного меню
                 case 1: functionTable.RunMenu(); continue;
-                case 2: Example3(); break;
-                case 3: Example4(); break;
+                case 2: ShowDateTime(); break;
+                case 3: RateWeather(); break;
                 case 4: phoneBook.RunMenu(); continue;
                 case 0: Environment.Exit(0); break;
-                default: Console.WriteLine("Неправильний вибір."); break;
             }
             
             ConsoleInput.WaitForEnter();
         }
     }
 
-    static void Example3()
+    static void ShowDateTime()
     {
         var now =  DateTime.Now;
 #if WINDOWS
@@ -54,7 +53,7 @@ static class Program
 #endif
     }
 
-    static void Example4()
+    static void RateWeather()
     {
         int temperature = ConsoleInput.ReadInt("Яка сьогодні температура? (ціле число): ");
         

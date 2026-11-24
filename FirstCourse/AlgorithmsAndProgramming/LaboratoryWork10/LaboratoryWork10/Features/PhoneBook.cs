@@ -1,4 +1,6 @@
-namespace LaboratoryWork10;
+using LaboratoryWork10.Common;
+
+namespace LaboratoryWork10.Features;
 
 public class PhoneBook
 {
@@ -8,14 +10,14 @@ public class PhoneBook
         ["Данило"] =  "+380950075367",
         ["Іван"] = "+380504541819"
     };
-    
+
     static readonly Menu PhoneBookMenu = new([
         "показати всі контакти",
         "знайти контакт",
         "додати контакт",
         "видалити контакт"
     ], "назад");
-    
+
     void ShowAll()
     {
         Console.WriteLine("--------------------");
@@ -29,12 +31,11 @@ public class PhoneBook
 
     void Find()
     {
-        Console.Write("Чий номер телефону ви шукаєте? ");
-                
-        string? contactFind =  Console.ReadLine();
-        if (contactFind != null && phoneBook.TryGetValue(contactFind, out string? number))
+        string contactName = ConsoleInput.ReadNonEmptyString("Чий номер телефону ви шукаєте? ", "Ім'я не може бути порожнім.");
+
+        if (phoneBook.TryGetValue(contactName, out string? number))
         {
-            Console.WriteLine($"Номер телефона контакта {contactFind}: {number}");
+            Console.WriteLine($"Номер телефону контакту {contactName}: {number}");
         }
         else
         {
@@ -47,14 +48,14 @@ public class PhoneBook
         while (true)
         {
             string contactName = ConsoleInput.ReadNonEmptyString("Введіть ім'я контакту: ", "Ім'я не може бути порожнім.");
-            
+
             if (phoneBook.ContainsKey(contactName))
             {
                 Console.WriteLine("Введіть ім'я контакту, якого немає в телефонній книзі.");
             }
             else
             {
-                string contactPhone = ConsoleInput.InputPhoneNumber(contactName);
+                string contactPhone = InputPhoneNumber(contactName);
                 phoneBook.Add(contactName, contactPhone);
                 break;
             }
@@ -63,10 +64,9 @@ public class PhoneBook
 
     void Remove()
     {
-        Console.Write("Введіть ім'я контакту, який треба видалити: ");
-                
-        string? contactName =  Console.ReadLine();
-        if (contactName != null && phoneBook.Remove(contactName))
+        string contactName = ConsoleInput.ReadNonEmptyString("Введіть ім'я контакту, який треба видалити: ", "Ім'я не може бути порожнім.");
+
+        if (phoneBook.Remove(contactName))
         {
             Console.WriteLine("Контакт видалено з телефонної книги.");
         }
@@ -76,13 +76,50 @@ public class PhoneBook
         }
     }
 
+    static string InputPhoneNumber(string contactName)
+    {
+        while (true)
+        {
+            Console.Write("Введіть номер телефону для контакту " + contactName + " (без пробілів): ");
+            string? input = Console.ReadLine();
+
+            if (input == null)
+            {
+                Environment.Exit(0);
+            }
+
+            if (IsValidPhoneNumber(input))
+            {
+                return input;
+            }
+
+            Console.WriteLine("Некоректне введення. Введіть номер телефону у форматі +380931048101.");
+        }
+    }
+
+    static bool IsValidPhoneNumber(string phoneNumber)
+    {
+        if (phoneNumber.Length != 13 || !phoneNumber.StartsWith("+380"))
+        {
+            return false;
+        }
+
+        for (var i = 1; i < phoneNumber.Length; i++)
+        {
+            if (!char.IsDigit(phoneNumber[i]))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public void RunMenu()
     {
         while (true)
         {
-            Console.Clear();
-            PhoneBookMenu.ShowMenu();
-            int choice = ConsoleInput.ReadInt("Оберіть пункт меню: ");
+            int choice = PhoneBookMenu.Choose();
 
             switch (choice)
             {
@@ -91,9 +128,8 @@ public class PhoneBook
                 case 3: Add(); break;
                 case 4: Remove(); break;
                 case 0: return;
-                default: Console.WriteLine("Неправильний вибір."); break;
             }
-            
+
             ConsoleInput.WaitForEnter();
         }
     }

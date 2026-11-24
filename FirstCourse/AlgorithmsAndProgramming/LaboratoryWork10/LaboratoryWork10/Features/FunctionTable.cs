@@ -1,4 +1,6 @@
-namespace LaboratoryWork10;
+using LaboratoryWork10.Common;
+
+namespace LaboratoryWork10.Features;
 
 public class FunctionTable
 {
@@ -34,26 +36,13 @@ public class FunctionTable
 
     void ChooseFunction()
     {
-        // очищаємо один раз, а не в циклі, щоб не стерти повідомлення про помилку
-        Console.Clear();
-        while (true)
-        {
-            FunctionListMenu.ShowMenu();
-            int choice = ConsoleInput.ReadInt("Оберіть функцію: ");
+        // Choose повертає тільки існуючий пункт, тому перевіряти номер ще раз не треба
+        int choice = FunctionListMenu.Choose("Оберіть функцію: ");
 
-            if (choice == 0)
-            {
-                return;
-            }
-            else if (functionList.ContainsValue(choice))
-            {
-                Function = choice;
-                return;
-            }
-            else
-            {
-                Console.WriteLine("Неправильний вибір.");
-            }
+        // 0 — назад, функцію не змінюємо
+        if (choice != 0)
+        {
+            Function = choice;
         }
     }
 
@@ -161,9 +150,7 @@ public class FunctionTable
     {
         while (true)
         {
-            Console.Clear();
-            FunctionTableMenu.ShowMenu();
-            int choice = ConsoleInput.ReadInt("Оберіть пункт меню: ");
+            int choice = FunctionTableMenu.Choose();
 
             switch (choice)
             {
@@ -171,7 +158,6 @@ public class FunctionTable
                 case 2: SetRange(); break;
                 case 3: ShowTable(); break;
                 case 0: return;
-                default: Console.WriteLine("Неправильний вибір."); break;
             }
             
             ConsoleInput.WaitForEnter();

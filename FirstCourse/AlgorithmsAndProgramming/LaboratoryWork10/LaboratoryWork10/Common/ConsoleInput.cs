@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace LaboratoryWork10;
+namespace LaboratoryWork10.Common;
 
 public static class ConsoleInput
 {
@@ -57,47 +57,18 @@ public static class ConsoleInput
             Console.Write(prompt);
             string? input = Console.ReadLine();
 
+            if (input == null)
+            {
+                Environment.Exit(0);
+            }
+
             if (!string.IsNullOrEmpty(input))
             {
                 return input;
             }
-                    
+
             Console.WriteLine($"Некоректне введення. {errorPrompt}");
         }
-    }
-    
-    public static string InputPhoneNumber(string contactName)
-    {
-        while (true)
-        {
-            Console.Write("Введіть номер телефону для контакту " + contactName + " (без пробілів): ");
-            string? input = Console.ReadLine();
-
-            if (input != null && IsValidPhoneNumber(input))
-            {
-                return input;
-            }
-            
-            Console.WriteLine("Некоректне введення. Введіть номер телефону у форматі +380931048101.");
-        }
-    }
-    
-    static bool IsValidPhoneNumber(string phoneNumber)
-    {
-        if (phoneNumber.Length != 13 || !phoneNumber.StartsWith("+380"))
-        {
-            return false;
-        }
-
-        for (var i = 1; i < phoneNumber.Length; i++)
-        {
-            if (!char.IsDigit(phoneNumber[i]))
-            {
-                return false;
-            }
-        }
-        
-        return true;
     }
 
     public static void WaitForEnter()
