@@ -99,4 +99,12 @@ public static class ConsoleInput
         
         return true;
     }
+
+    public static void WaitForEnter()
+    {
+        Console.WriteLine();
+        Console.Write("Натисніть Enter, щоб продовжити...");
+        // ReadLine сам чекає саме на Enter, тому цикл не потрібен
+        Console.ReadLine();
+    }
 }

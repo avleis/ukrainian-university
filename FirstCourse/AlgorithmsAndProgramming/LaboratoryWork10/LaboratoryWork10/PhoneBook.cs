@@ -19,7 +19,7 @@ public class PhoneBook
     void ShowAll()
     {
         Console.WriteLine("--------------------");
-        Console.WriteLine($"- Усього контактів: {phoneBook.Count} -");
+        Console.WriteLine($"Усього контактів: {phoneBook.Count}");
         foreach (var contact in phoneBook)
         {
             Console.WriteLine($"{contact.Key}: {contact.Value}");
@@ -34,7 +34,7 @@ public class PhoneBook
         string? contactFind =  Console.ReadLine();
         if (contactFind != null && phoneBook.TryGetValue(contactFind, out string? number))
         {
-            Console.WriteLine(number);
+            Console.WriteLine($"Номер телефона контакта {contactFind}: {number}");
         }
         else
         {
@@ -78,17 +78,23 @@ public class PhoneBook
 
     public void RunMenu()
     {
-        PhoneBookMenu.ShowMenu();
-        int choice = ConsoleInput.ReadInt("Оберіть пункт меню: ");
-
-        switch (choice)
+        while (true)
         {
-            case 1: ShowAll(); break;
-            case 2: Find(); break;
-            case 3: Add(); break;
-            case 4: Remove(); break;
-            case 0: return;
-            default: Console.WriteLine("Неправильний вибір."); break;
+            Console.Clear();
+            PhoneBookMenu.ShowMenu();
+            int choice = ConsoleInput.ReadInt("Оберіть пункт меню: ");
+
+            switch (choice)
+            {
+                case 1: ShowAll(); break;
+                case 2: Find(); break;
+                case 3: Add(); break;
+                case 4: Remove(); break;
+                case 0: return;
+                default: Console.WriteLine("Неправильний вибір."); break;
+            }
+            
+            ConsoleInput.WaitForEnter();
         }
     }
 }

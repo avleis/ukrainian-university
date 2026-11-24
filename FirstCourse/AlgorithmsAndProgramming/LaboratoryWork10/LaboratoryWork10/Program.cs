@@ -3,9 +3,9 @@
 static class Program
 {
     static readonly Menu MainMenu = new([
-        "таблиця значень y = x²",
-        "поточна дата і час",
-        "оцінка погоди",
+        "таблиця функцій",
+        "дата і час",
+        "конвертер оцінок",
         "телефонна книга"
     ]);
     
@@ -16,42 +16,27 @@ static class Program
         Console.InputEncoding = System.Text.Encoding.UTF8;
         
         PhoneBook phoneBook = new();
+        FunctionTable functionTable = new();
 
-        Console.WriteLine("--- Консольна програма-помічник ---");
         while (true)
         {
+            Console.Clear();
+            Console.WriteLine("--- Консольна програма-помічник ---");
             MainMenu.ShowMenu();
             int choice = ConsoleInput.ReadInt("Оберіть пункт меню: ");
 
             switch (choice)
             {
-                case 1: Example2(); break;
+                // після підменю пауза не потрібна: continue одразу повертає до головного меню
+                case 1: functionTable.RunMenu(); continue;
                 case 2: Example3(); break;
                 case 3: Example4(); break;
-                case 4: phoneBook.RunMenu(); break;
+                case 4: phoneBook.RunMenu(); continue;
                 case 0: Environment.Exit(0); break;
                 default: Console.WriteLine("Неправильний вибір."); break;
             }
-        }
-    }
-
-    static void Example2()
-    {
-        int limit = ConsoleInput.ReadInt("Введіть межу: ");
-        int step = ConsoleInput.ReadInt("Введіть крок: ");
-        
-        if (step <= 0)
-        {
-            Console.WriteLine("Крок має бути більшим за 0.");
-            return; 
-        }
-
-        Console.WriteLine($"{"x",8}{"y",10}");
-
-        for (double x = 1; x <= limit; x += step)
-        {
-            double y = x * x;
-            Console.WriteLine($"{x,8:F2}{y,10:F4}");
+            
+            ConsoleInput.WaitForEnter();
         }
     }
 
