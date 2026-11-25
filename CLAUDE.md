@@ -12,7 +12,7 @@
   - `Documentation/Assignments/`: условия лабораторных (`AssignmentsForLaboratoryWorks01To09.docx`, `AssignmentsForLaboratoryWorks10To15.docx`)
   - `Documentation/Reports/`: отчёты к лабораторным (`LaboratoryWorkNN.docx`)
 
-Список работ и инструкции по запуску лежат в `README.md`. Когда добавляешь новую работу, обнови таблицу в README.
+`README.md` описывает репозиторий в общем виде (дисциплины, шаблон структуры, запуск) и не перечисляет отдельные работы. При добавлении новой работы README не меняй. Обновляй его, только когда появляется новая дисциплина (строка в таблице «Дисципліни») или меняется общая структура либо способ запуска.
 
 ## Окружение
 
@@ -56,7 +56,7 @@ dotnet sln add LaboratoryWorkNN/LaboratoryWorkNN.csproj
 - Коммиты по Conventional Commits, с дисциплиной или файлом в скоупе:
   - `feat(AlgorithmsAndProgramming): add laboratory work 11`
   - `fix(AlgorithmsAndProgramming): handle empty input in laboratory work 09`
-  - `docs(README.md): add laboratory work 11 to the list`
+  - `docs(README.md): add discrete mathematics to the disciplines`
 - `bin/`, `obj/`, `.idea/`, `.vs/`, `*.DotSettings.user`, `.DS_Store` не коммить, они уже в `.gitignore`.
 - Коммить и пушь, только когда я прошу.
 
