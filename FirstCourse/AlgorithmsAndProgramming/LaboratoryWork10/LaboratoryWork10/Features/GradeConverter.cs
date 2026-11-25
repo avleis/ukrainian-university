@@ -21,11 +21,11 @@ public class GradeConverter
     
     string GetNationals(int score)
     {
-        if (score > 89) return "добре";
+        if (score > 89) return "відмінно";
         else if (score > 81) return "добре";
         else if (score > 73) return "задовільно";
         else if (score > 63) return "задовільно";
-        else if (score > 59) return "незадовільно";
+        else if (score > 59) return "задовільно";
         else return "незадовільно";
     }
 
