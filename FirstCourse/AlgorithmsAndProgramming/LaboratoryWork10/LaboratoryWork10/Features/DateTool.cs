@@ -4,7 +4,7 @@ namespace LaboratoryWork10.Features;
 
 public class DateTool
 {
-    static readonly Menu DateToolMenu = new("--- Дата і час ---", [
+    static readonly Menu DateToolMenu = new("─── Дата і час ───", [
         "поточна дата і час",
         "скільки днів до кінця семестру",
         "калькулятор віку"

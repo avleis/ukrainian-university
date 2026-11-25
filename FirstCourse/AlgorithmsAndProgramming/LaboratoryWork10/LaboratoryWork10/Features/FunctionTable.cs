@@ -4,7 +4,6 @@ namespace LaboratoryWork10.Features;
 
 public class FunctionTable
 {
-    // назви функцій: з них будується меню, і за ними ж Calculate обирає формулу
     static readonly string[] FunctionNames = ["x²", "x³", "√x", "sin x", "1/x"];
 
     string function = "x²";
@@ -12,24 +11,21 @@ public class FunctionTable
     double limit = 5;
     double step = 0.5;
 
-    static readonly Menu FunctionTableMenu = new("--- Таблиця функцій ---", [
+    static readonly Menu FunctionTableMenu = new("─── Таблиця функцій ───", [
         "обрати функцію",
         "задати діапазон",
         "показати таблицю"
     ], "назад");
 
-    static readonly Menu FunctionListMenu = new("--- Вибір функції ---", FunctionNames, "назад");
+    static readonly Menu FunctionListMenu = new("─── Вибір функції ───", FunctionNames, "назад");
 
     void ChooseFunction()
     {
         
-        // Choose повертає тільки існуючий пункт, тому перевіряти номер ще раз не треба
         int choice = FunctionListMenu.Choose("Оберіть функцію: ");
         
-        // 0 — назад, функцію не змінюємо
         if (choice != 0)
         {
-            // пункти меню нумеруються з 1, а масив з 0
             function = FunctionNames[choice - 1];
         }
     }
@@ -98,22 +94,18 @@ public class FunctionTable
     {
         Console.WriteLine($"Функція: {function}, діапазон: від {start} до {limit}, крок {step}");
 
-        // ширина колонок; const, бо в {x,ширина} можна писати тільки константу
         const int xWidth = 8;
         const int yWidth = 10;
 
         Console.WriteLine($"{"x",xWidth} │{function,yWidth}");
         Console.WriteLine(new string('─', xWidth + 1) + "┼" + new string('─', yWidth));
 
-        // кількість кроків округлюємо вниз, щоб останній x не вийшов за межу;
-        // 1e-9 — запас на похибку double: 0.3 / 0.1 дає 2.9999999999999996, а має бути 3
         int n = (int)Math.Floor((limit - start) / step + 1e-9);
 
         for (int i = 0; i <= n; i++)
         {
             double x = start + i * step;
 
-            // через похибку double замість 0 може вийти, наприклад, -1e-16, тому таке число вважаємо нулем
             if (Math.Abs(x) < 1e-9)
             {
                 x = 0;

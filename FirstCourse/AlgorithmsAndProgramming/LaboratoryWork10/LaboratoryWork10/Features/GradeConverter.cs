@@ -4,7 +4,7 @@ namespace LaboratoryWork10.Features;
 
 public class GradeConverter
 {
-    static readonly Menu GradeConverterMenu = new("--- Конвертор оцінок ---", [
+    static readonly Menu GradeConverterMenu = new("─── Конвертор оцінок ───", [
         "перевести бал в оцінку",
         "показати шкалу оцінювання"
     ], "назад");

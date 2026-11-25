@@ -20,13 +20,13 @@ public class Menu
             Console.WriteLine(Title);
         }
 
-        Console.WriteLine("--------------------");
+        Console.WriteLine(new string('─', 25));
         for (var i = 0; i < Options.Length; i++)
         {
             Console.WriteLine($"{i + 1} - {Options[i]}");
         }
         Console.WriteLine($"0 - {ExitOption}");
-        Console.WriteLine("--------------------");
+        Console.WriteLine(new string('─', 25));
     }
 
     // очищає екран, показує меню і повертає номер існуючого пункту (0 — вихід або назад)

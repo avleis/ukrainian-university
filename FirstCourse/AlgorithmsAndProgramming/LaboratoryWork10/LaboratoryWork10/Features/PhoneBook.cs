@@ -11,7 +11,7 @@ public class PhoneBook
         ["Іван"] = "+380504541819"
     };
 
-    static readonly Menu PhoneBookMenu = new("--- Телефонна книга ---", [
+    static readonly Menu PhoneBookMenu = new("─── Телефонна книга ───", [
         "показати всі контакти",
         "знайти контакт",
         "додати контакт",
@@ -20,13 +20,13 @@ public class PhoneBook
 
     void ShowAll()
     {
-        Console.WriteLine("--------------------");
+        Console.WriteLine(new string('─', 25));
         Console.WriteLine($"Усього контактів: {phoneBook.Count}");
         foreach (var contact in phoneBook)
         {
             Console.WriteLine($"{contact.Key}: {contact.Value}");
         }
-        Console.WriteLine("--------------------");
+        Console.WriteLine(new string('─', 25));
     }
 
     void Find()
