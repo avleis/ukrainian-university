@@ -9,4 +9,7 @@ obj/
 
 .DS_Store
 .vscode
+
+# Claude
 .claude
+CLAUDE.md
