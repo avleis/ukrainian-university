@@ -20,8 +20,13 @@
 ukrainian-university/
 ├── FirstCourse/                       # 1 курс
 │   └── AlgorithmsAndProgramming/      # Алгоритми та програмування
-│       ├── AssignmentsForLaboratoryWorks01To09.docx
-│       ├── AssignmentsForLaboratoryWorks10To15.docx
+│       ├── Documentation/
+│       │   ├── Assignments/           # Умови лабораторних робіт
+│       │   │   ├── AssignmentsForLaboratoryWorks01To09.docx
+│       │   │   └── AssignmentsForLaboratoryWorks10To15.docx
+│       │   └── Reports/               # Звіти до лабораторних робіт
+│       │       ├── LaboratoryWork01.docx
+│       │       └── ...
 │       ├── LaboratoryWork02/
 │       │   ├── LaboratoryWork02.sln
 │       │   └── LaboratoryWork02/
@@ -52,8 +57,10 @@ ukrainian-university/
 
 Умови лабораторних робіт:
 
-- 01–09: [`AssignmentsForLaboratoryWorks01To09.docx`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks01To09.docx)
-- 10–15: [`AssignmentsForLaboratoryWorks10To15.docx`](FirstCourse/AlgorithmsAndProgramming/AssignmentsForLaboratoryWorks10To15.docx)
+- 01–09: [`AssignmentsForLaboratoryWorks01To09.docx`](FirstCourse/AlgorithmsAndProgramming/Documentation/Assignments/AssignmentsForLaboratoryWorks01To09.docx)
+- 10–15: [`AssignmentsForLaboratoryWorks10To15.docx`](FirstCourse/AlgorithmsAndProgramming/Documentation/Assignments/AssignmentsForLaboratoryWorks10To15.docx)
+
+Звіти до лабораторних робіт 01–10 лежать у папці [`Documentation/Reports`](FirstCourse/AlgorithmsAndProgramming/Documentation/Reports).
 
 ### Формат вхідних файлів
 

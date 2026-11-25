@@ -7,7 +7,8 @@
 Структура: `<Курс>/<Дисциплина>/<Работа>`.
 - `FirstCourse/AlgorithmsAndProgramming/`: «Алгоритми та програмування», лабораторные работы на C#
   - `LaboratoryWorkNN/`: одна лабораторная, отдельное решение `.sln` и проект внутри (`LaboratoryWorkNN/LaboratoryWorkNN/Program.cs`)
-  - `AssignmentsForLaboratoryWorks10To15.docx`: условия лабораторных 10–15
+  - `Documentation/Assignments/`: условия лабораторных (`AssignmentsForLaboratoryWorks01To09.docx`, `AssignmentsForLaboratoryWorks10To15.docx`)
+  - `Documentation/Reports/`: отчёты к лабораторным (`LaboratoryWorkNN.docx`)
 
 Список работ и инструкции по запуску лежат в `README.md`. Когда добавляешь новую работу, обнови таблицу в README.
 
