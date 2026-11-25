@@ -6,7 +6,9 @@
 
 Структура: `<Курс>/<Дисциплина>/<Работа>`.
 - `FirstCourse/AlgorithmsAndProgramming/`: «Алгоритми та програмування», лабораторные работы на C#
-  - `LaboratoryWorkNN/`: одна лабораторная, отдельное решение `.sln` и проект внутри (`LaboratoryWorkNN/LaboratoryWorkNN/Program.cs`)
+  - `LaboratoryWorkNN/`: одна лабораторная, отдельное решение `.sln` и проект внутри (`LaboratoryWorkNN/LaboratoryWorkNN/Program.cs`). Код есть для лабораторных 02–10, у 01 есть только отчёт.
+    - Маленькие лабораторные (02–09) целиком лежат в одном `Program.cs`.
+    - Большие разбиты на файлы. Например, в `LaboratoryWork10` общие классы лежат в `Common/` (`Menu`, `ConsoleInput`), а пункты меню в `Features/` (по одному классу на пункт). Пространства имён повторяют папки: `LaboratoryWork10.Common`, `LaboratoryWork10.Features`.
   - `Documentation/Assignments/`: условия лабораторных (`AssignmentsForLaboratoryWorks01To09.docx`, `AssignmentsForLaboratoryWorks10To15.docx`)
   - `Documentation/Reports/`: отчёты к лабораторным (`LaboratoryWorkNN.docx`)
 
@@ -55,7 +57,7 @@ dotnet sln add LaboratoryWorkNN/LaboratoryWorkNN.csproj
   - `feat(AlgorithmsAndProgramming): add laboratory work 11`
   - `fix(AlgorithmsAndProgramming): handle empty input in laboratory work 09`
   - `docs(README.md): add laboratory work 11 to the list`
-- `bin/`, `obj/`, `.idea/`, `.vs/` не коммить, они уже в `.gitignore`.
+- `bin/`, `obj/`, `.idea/`, `.vs/`, `*.DotSettings.user`, `.DS_Store` не коммить, они уже в `.gitignore`.
 - Коммить и пушь, только когда я прошу.
 
 ## Скиллы
@@ -63,7 +65,7 @@ dotnet sln add LaboratoryWorkNN/LaboratoryWorkNN.csproj
 - **karpathy-guidelines**: используй всегда, когда пишешь, меняешь или ревьюишь код. Минимальные точечные правки, без переусложнения, явные допущения, проверяемый результат.
 - **honest-grader**: используй, когда я прошу оценить работу перед сдачей. Проверяй строго по условию, без завышения.
 - **socratic-tutor**: используй, когда я разбираю новую тему или готовлюсь к защите. Задавай наводящие вопросы, чтобы я сам пришёл к пониманию.
-- **docx**: используй, чтобы прочитать условия заданий из `.docx`.
+- **docx**: используй, чтобы прочитать условия заданий или отчёты из `.docx`.
 
 ## Как со мной работать
 
