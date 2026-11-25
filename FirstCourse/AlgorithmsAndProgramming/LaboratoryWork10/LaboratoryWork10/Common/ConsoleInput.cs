@@ -17,9 +17,9 @@ public static class ConsoleInput
                 Environment.Exit(0);
             }
 
-            if (int.TryParse(input, out int number))
+            if (int.TryParse(input, out int integer))
             {
-                return number; 
+                return integer; 
             }
 
             Console.WriteLine("Некоректне введення. Введіть ціле число.");
@@ -47,6 +47,28 @@ public static class ConsoleInput
             }
 
             Console.WriteLine("Некоректне введення. Введіть число.");
+        }
+    }
+    
+    public static DateTime ReadDate(string prompt)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+
+            // null означає, що введення закінчилось (наприклад, Ctrl+D) — далі читати нічого
+            if (input == null)
+            {
+                Environment.Exit(0);
+            }
+
+            if (DateTime.TryParseExact(input, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTime))
+            {
+                return dateTime;
+            }
+
+            Console.WriteLine("Некоректне введення. Введіть дату в форматі (дд.мм.рррр).");
         }
     }
 
