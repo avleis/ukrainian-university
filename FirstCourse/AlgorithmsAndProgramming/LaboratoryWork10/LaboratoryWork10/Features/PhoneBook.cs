@@ -11,7 +11,7 @@ public class PhoneBook
         ["Іван"] = "+380504541819"
     };
 
-    static readonly Menu PhoneBookMenu = new("─── Телефонна книга ───", [
+    static readonly ConsoleMenu PhoneBookMenu = new("─── Телефонна книга ───", [
         "показати всі контакти",
         "знайти контакт",
         "додати контакт",

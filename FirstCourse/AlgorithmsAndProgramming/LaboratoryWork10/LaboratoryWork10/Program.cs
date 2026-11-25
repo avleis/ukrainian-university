@@ -5,7 +5,7 @@ namespace LaboratoryWork10;
 
 static class Program
 {
-    static readonly Menu MainMenu = new("─── Консольна програма-помічник ───", [
+    static readonly ConsoleMenu MainMenu = new("─── Консольна програма-помічник ───", [
         "таблиця функцій",
         "дата і час (працює через MessageBox)",
         "конвертер оцінок",

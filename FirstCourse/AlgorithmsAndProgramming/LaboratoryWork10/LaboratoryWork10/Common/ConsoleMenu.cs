@@ -1,12 +1,12 @@
 namespace LaboratoryWork10.Common;
 
-public class Menu
+public class ConsoleMenu
 {
     public string Title { get; }
     public string[] Options { get; }
     public string ExitOption { get; }
 
-    public Menu(string title, string[] options, string exitOption = "вийти")
+    public ConsoleMenu(string title, string[] options, string exitOption = "вийти")
     {
         Title = title;
         Options = options;
