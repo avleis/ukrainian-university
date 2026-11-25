@@ -41,7 +41,7 @@ public static class ConsoleInput
             // приймаємо і кому, і крапку: замінюємо кому на крапку і читаємо в інваріантній культурі
             input = input.Replace(',', '.');
 
-            if (double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out double number))
+            if (double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out double number) && !double.IsNaN(number) && !double.IsInfinity(number))
             {
                 return number; 
             }
