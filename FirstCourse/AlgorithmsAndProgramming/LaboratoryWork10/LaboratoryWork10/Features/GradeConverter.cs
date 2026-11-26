@@ -9,16 +9,26 @@ public class GradeConverter
         "показати шкалу оцінювання"
     ], "назад");
 
+    static readonly (string Points, char Ects, string National)[] grades =
+    [
+        ("90–100", 'A', "відмінно"),
+        ("82–89",  'B', "добре"),
+        ("74–81",  'C', "добре"),
+        ("64–73",  'D', "задовільно"),
+        ("60–63",  'E', "задовільно"),
+        ("0–59",   'F', "незадовільно")
+    ];
+
     char GetEcts(int score)
     {
         return score switch
         {
-            > 89 => 'A',
-            > 81 => 'B',
-            > 73 => 'C',
-            > 63 => 'D',
-            > 59 => 'E',
-            _ => 'F'
+            > 89 => grades[0].Ects,
+            > 81 => grades[1].Ects,
+            > 73 => grades[2].Ects,
+            > 63 => grades[3].Ects,
+            > 59 => grades[4].Ects,
+            _ => grades[5].Ects
         };
     }
     
@@ -26,12 +36,12 @@ public class GradeConverter
     {
         return score switch
         {
-            > 89 => "відмінно",
-            > 81 => "добре",
-            > 73 => "добре",
-            > 63 => "задовільно",
-            > 59 => "задовільно",
-            _ => "незадовільно"
+            > 89 => grades[0].National,
+            > 81 => grades[1].National,
+            > 73 => grades[2].National,
+            > 63 => grades[3].National,
+            > 59 => grades[4].National,
+            _ => grades[5].National
         };
     }
 
@@ -40,23 +50,23 @@ public class GradeConverter
         int score = ConsoleInput.ReadInt("Який бал треба перевести? ");
         Console.WriteLine($"Бали: {score}, ECTS: {GetEcts(score)},  Національна: {GetNationals(score)}");
     }
+
+    static string FormatRow(string col1, char col2, string col3)
+    {
+        return $" {col1,-10} │ {col2,-10} │ {col3,-12}";
+    }
     
     void ShowScale()
     {
-        Console.WriteLine($"{"Бали",-10} │ {"ECTS",-10} │ {"Національна",7}");
-        Console.Write(new string('─', 11));
-        Console.Write("┼");
-        Console.Write(new string('─', 12));
-        Console.Write("┼");
-        Console.WriteLine(new string('─', 14));
-        Console.WriteLine($"{"90–100",-10} │ {"A",-10} │ {"відмінно",-10}");
-        Console.WriteLine($"{"82–89",-10} │ {"B",-10} │ {"добре",-10}");
-        Console.WriteLine($"{"74–81",-10} │ {"C",-10} │ {"добре",-10}");
-        Console.WriteLine($"{"64–73",-10} │ {"D",-10} │ {"задовільно",-10}");
-        Console.WriteLine($"{"60–63",-10} │ {"E",-10} │ {"задовільно",-10}");
-        Console.WriteLine($"{"0–59",-10} │ {"F",-10} │ {"незадовільно",-10}");
+        Console.WriteLine($" {"Бали",-10} │ {"ECTS",-10} │ {"Національна",-12}");
+        Console.WriteLine($"{new string('─', 12)}┼{new string('─', 12)}┼{new string('─', 14)}");
+
+        foreach (var (points, ects, national) in grades)
+        {
+            Console.WriteLine(FormatRow(points, ects, national));
+        }
     }
-    
+
     public void RunMenu()
     {
         while (true)
