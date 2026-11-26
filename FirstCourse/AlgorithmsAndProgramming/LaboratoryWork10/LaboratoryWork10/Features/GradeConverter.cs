@@ -9,7 +9,7 @@ public class GradeConverter
         "показати шкалу оцінювання"
     ], "назад");
 
-    static readonly (string Points, char Ects, string National)[] grades =
+    static readonly (string Points, char Ects, string National)[] Grades =
     [
         ("90–100", 'A', "відмінно"),
         ("82–89",  'B', "добре"),
@@ -23,12 +23,12 @@ public class GradeConverter
     {
         return score switch
         {
-            > 89 => grades[0].Ects,
-            > 81 => grades[1].Ects,
-            > 73 => grades[2].Ects,
-            > 63 => grades[3].Ects,
-            > 59 => grades[4].Ects,
-            _ => grades[5].Ects
+            > 89 => Grades[0].Ects,
+            > 81 => Grades[1].Ects,
+            > 73 => Grades[2].Ects,
+            > 63 => Grades[3].Ects,
+            > 59 => Grades[4].Ects,
+            _ => Grades[5].Ects
         };
     }
     
@@ -36,12 +36,12 @@ public class GradeConverter
     {
         return score switch
         {
-            > 89 => grades[0].National,
-            > 81 => grades[1].National,
-            > 73 => grades[2].National,
-            > 63 => grades[3].National,
-            > 59 => grades[4].National,
-            _ => grades[5].National
+            > 89 => Grades[0].National,
+            > 81 => Grades[1].National,
+            > 73 => Grades[2].National,
+            > 63 => Grades[3].National,
+            > 59 => Grades[4].National,
+            _ => Grades[5].National
         };
     }
 
@@ -51,9 +51,9 @@ public class GradeConverter
         Console.WriteLine($"Бали: {score}, ECTS: {GetEcts(score)},  Національна: {GetNationals(score)}");
     }
 
-    static string FormatRow(string col1, char col2, string col3)
+    static string FormatRow(string score, char ects, string national)
     {
-        return $" {col1,-10} │ {col2,-10} │ {col3,-12}";
+        return $" {score,-10} │ {ects,-10} │ {national,-12}";
     }
     
     void ShowScale()
@@ -61,7 +61,7 @@ public class GradeConverter
         Console.WriteLine($" {"Бали",-10} │ {"ECTS",-10} │ {"Національна",-12}");
         Console.WriteLine($"{new string('─', 12)}┼{new string('─', 12)}┼{new string('─', 14)}");
 
-        foreach (var (points, ects, national) in grades)
+        foreach (var (points, ects, national) in Grades)
         {
             Console.WriteLine(FormatRow(points, ects, national));
         }
