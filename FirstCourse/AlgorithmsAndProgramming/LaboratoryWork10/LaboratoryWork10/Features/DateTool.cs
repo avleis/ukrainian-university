@@ -65,7 +65,8 @@ public class DateTool
             return;
         }
 
-        DateTime thisYearBirthday = new DateTime(today.Year, birthDate.Month, birthDate.Day);
+        // AddYears не падає на 29.02: у невисокосний рік повертає 28.02
+        DateTime thisYearBirthday = birthDate.AddYears(today.Year - birthDate.Year);
 
         int age = today.Year - birthDate.Year;
 
@@ -73,7 +74,7 @@ public class DateTool
 
         DateTime nextBirthday = thisYearBirthday;
 
-        if (nextBirthday < today) nextBirthday = nextBirthday.AddYears(1);
+        if (nextBirthday < today) nextBirthday = birthDate.AddYears(today.Year - birthDate.Year + 1);
 
         int daysLeft = (nextBirthday - today).Days;
 

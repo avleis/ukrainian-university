@@ -28,7 +28,7 @@ public class GradeConverter
         {
             > 89 => "відмінно",
             > 81 => "добре",
-            > 73 => "задовільно",
+            > 73 => "добре",
             > 63 => "задовільно",
             > 59 => "задовільно",
             _ => "незадовільно"
@@ -41,7 +41,6 @@ public class GradeConverter
         Console.WriteLine($"Бали: {score}, ECTS: {GetEcts(score)},  Національна: {GetNationals(score)}");
     }
     
-    // самое тупое что я когда-то делал
     void ShowScale()
     {
         Console.WriteLine($"{"Бали",-10} │ {"ECTS",-10} │ {"Національна",7}");
