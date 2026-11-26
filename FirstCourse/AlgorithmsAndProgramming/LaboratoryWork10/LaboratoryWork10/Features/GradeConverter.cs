@@ -11,22 +11,28 @@ public class GradeConverter
 
     char GetEcts(int score)
     {
-        if (score > 89) return 'A';
-        else if (score > 81) return 'B';
-        else if (score > 73) return 'C';
-        else if (score > 63) return 'D';
-        else if (score > 59) return 'E';
-        else return 'F';
+        return score switch
+        {
+            > 89 => 'A',
+            > 81 => 'B',
+            > 73 => 'C',
+            > 63 => 'D',
+            > 59 => 'E',
+            _ => 'F'
+        };
     }
     
     string GetNationals(int score)
     {
-        if (score > 89) return "відмінно";
-        else if (score > 81) return "добре";
-        else if (score > 73) return "задовільно";
-        else if (score > 63) return "задовільно";
-        else if (score > 59) return "задовільно";
-        else return "незадовільно";
+        return score switch
+        {
+            > 89 => "відмінно",
+            > 81 => "добре",
+            > 73 => "задовільно",
+            > 63 => "задовільно",
+            > 59 => "задовільно",
+            _ => "незадовільно"
+        };
     }
 
     void Convert()
