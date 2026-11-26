@@ -23,21 +23,22 @@ static class Program
         DateTool dateTool = new();
         GradeConverter gradeConvertor = new();
         PhoneBook phoneBook = new();
-
+        
         while (true)
         {
             int choice = MainMenu.Choose();
 
-            switch (choice)
+            Action action = choice switch
             {
-                case 1: functionTable.RunMenu(); continue;
-                case 2: dateTool.RunMenu(); continue;
-                case 3: gradeConvertor.RunMenu(); continue;
-                case 4: phoneBook.RunMenu(); continue;
-                case 0: Environment.Exit(0); break;
-            }
-            
-            ConsoleInput.WaitForEnter();
+                1 => functionTable.RunMenu,
+                2 => dateTool.RunMenu,
+                3 => gradeConvertor.RunMenu,
+                4 => phoneBook.RunMenu,
+                0 => () => Environment.Exit(0),
+                _ => ConsoleInput.WaitForEnter
+            };
+
+            action();
         }
     }
 }
