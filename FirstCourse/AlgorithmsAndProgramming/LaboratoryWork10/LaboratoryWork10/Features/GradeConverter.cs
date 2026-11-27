@@ -41,7 +41,7 @@ public class GradeConverter
 
     void Convert()
     {
-        int score = ConsoleInput.ReadInt("Який бал треба перевести? ");
+        int score = ConsoleInput.ReadIntInRange("Який бал треба перевести? ", 0, 100);
         Console.WriteLine($"Бали: {score}, ECTS: {GetEcts(score)},  Національна: {GetNationals(score)}");
     }
 

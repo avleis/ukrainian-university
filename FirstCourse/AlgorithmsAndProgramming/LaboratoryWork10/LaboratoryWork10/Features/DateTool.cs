@@ -47,7 +47,8 @@ public class DateTool
 
     void DaysUntilSemesterEnd()
     {
-        int days = (SemesterEnd - DateTime.Now).Days;
+        // Today без часу доби: інакше дробова частина дня відкидається і днів виходить на один менше
+        int days = (SemesterEnd - DateTime.Today).Days;
         
         if (days > 0) Notify("Дні до кінця семестру", $"До кінця семестру залишилось {days} днів.");
         else if (days == 0) Notify("Дні до кінця семестру", "Семестр закінчується сьогодні.");

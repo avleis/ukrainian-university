@@ -26,6 +26,21 @@ public static class ConsoleInput
         }
     }
     
+    public static int ReadIntInRange(string prompt, int min, int max)
+    {
+        while (true)
+        {
+            int number = ReadInt(prompt);
+
+            if (number >= min && number <= max)
+            {
+                return number;
+            }
+
+            Console.WriteLine($"Некоректне введення. Введіть число від {min} до {max}.");
+        }
+    }
+
     public static double ReadDouble(string prompt = "")
     {
         while (true)
