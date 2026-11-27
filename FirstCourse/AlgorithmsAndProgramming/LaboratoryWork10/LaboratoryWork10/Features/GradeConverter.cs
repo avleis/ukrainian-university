@@ -19,30 +19,22 @@ public class GradeConverter
         ("0–59",   'F', "незадовільно")
     ];
 
-    char GetEcts(int score)
+    // інтервали перевіряються один раз; результат — номер рядка в масиві Grades
+    int GetGradeIndex(int score)
     {
-        if (score > 89) return Grades[0].Ects;
-        else if (score > 81) return Grades[1].Ects;
-        else if (score > 73) return Grades[2].Ects;
-        else if (score > 63) return Grades[3].Ects;
-        else if (score > 59) return Grades[4].Ects;
-        else return Grades[5].Ects;
-    }
-    
-    string GetNationals(int score)
-    {
-        if (score > 89) return Grades[0].National;
-        else if (score > 81) return Grades[1].National;
-        else if (score > 73) return Grades[2].National;
-        else if (score > 63) return Grades[3].National;
-        else if (score > 59) return Grades[4].National;
-        else return Grades[5].National;
+        if (score > 89) return 0;
+        else if (score > 81) return 1;
+        else if (score > 73) return 2;
+        else if (score > 63) return 3;
+        else if (score > 59) return 4;
+        else return 5;
     }
 
     void Convert()
     {
         int score = ConsoleInput.ReadIntInRange("Який бал треба перевести? ", 0, 100);
-        Console.WriteLine($"Бали: {score}, ECTS: {GetEcts(score)},  Національна: {GetNationals(score)}");
+        int index = GetGradeIndex(score);
+        Console.WriteLine($"Бали: {score}, ECTS: {Grades[index].Ects}, Національна: {Grades[index].National}");
     }
 
     static string FormatRow(string score, char ects, string national)
