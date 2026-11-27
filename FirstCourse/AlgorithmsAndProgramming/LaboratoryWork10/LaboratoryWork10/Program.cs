@@ -28,17 +28,14 @@ static class Program
         {
             int choice = MainMenu.Choose();
 
-            Action action = choice switch
+            switch (choice)
             {
-                1 => functionTable.RunMenu,
-                2 => dateTool.RunMenu,
-                3 => gradeConvertor.RunMenu,
-                4 => phoneBook.RunMenu,
-                0 => () => Environment.Exit(0),
-                _ => ConsoleInput.WaitForEnter
-            };
-
-            action();
+                case 1: functionTable.RunMenu(); break;
+                case 2: dateTool.RunMenu(); break;
+                case 3: gradeConvertor.RunMenu(); break;
+                case 4: phoneBook.RunMenu(); break;
+                case 0: return;
+            }
         }
     }
 }
