@@ -21,7 +21,7 @@ static class Program
         
         FunctionTable functionTable = new();
         DateTool dateTool = new();
-        GradeConverter gradeConvertor = new();
+        GradeConverter gradeConverter = new();
         PhoneBook phoneBook = new();
         
         while (true)
@@ -32,7 +32,7 @@ static class Program
             {
                 case 1: functionTable.RunMenu(); break;
                 case 2: dateTool.RunMenu(); break;
-                case 3: gradeConvertor.RunMenu(); break;
+                case 3: gradeConverter.RunMenu(); break;
                 case 4: phoneBook.RunMenu(); break;
                 case 0: return;
             }
